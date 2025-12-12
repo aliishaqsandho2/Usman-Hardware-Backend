@@ -1,0 +1,526 @@
+## 🔐 **AUTHENTICATION & SECURITY**
+
+### Users Management
+1. **GET** `/api/users` - List all users (with pagination/filters)
+2. **GET** `/api/users/{id}` - Get user details
+3. **POST** `/api/users` - Create new user
+4. **PUT** `/api/users/{id}` - Update user details
+5. **DELETE** `/api/users/{id}` - Delete user (soft/hard delete)
+6. **PATCH** `/api/users/{id}/status` - Toggle active/inactive
+7. **PATCH** `/api/users/{id}/role` - Change user role
+8. **GET** `/api/users/roles/{role}` - Get users by role
+9. **POST** `/api/users/{id}/permissions` - Update permissions
+10. **GET** `/api/users/search?q=` - Search users
+11. **GET** `/api/users/export` - Export users list
+12. **POST** `/api/users/{id}/avatar` - Upload avatar
+13. **POST** `/api/users/{id}/reset-password` - Reset password (admin)
+
+### Authentication
+14. **POST** `/api/auth/login` - User login
+15. **POST** `/api/auth/logout` - User logout
+16. **POST** `/api/auth/register` - Register new user
+17. **POST** `/api/auth/refresh-token` - Refresh access token
+18. **POST** `/api/auth/forgot-password` - Forgot password request
+19. **POST** `/api/auth/reset-password` - Reset password with token
+20. **POST** `/api/auth/change-password` - Change password (authenticated)
+21. **GET** `/api/auth/me` - Get current user profile
+22. **PUT** `/api/auth/profile` - Update profile
+
+### Sessions Management
+23. **GET** `/api/sessions` - List all active sessions
+24. **GET** `/api/sessions/{id}` - Get session details
+25. **DELETE** `/api/sessions/{id}` - Terminate session
+26. **DELETE** `/api/sessions/user/{userId}` - Terminate all user sessions
+27. **GET** `/api/sessions/user/{userId}` - Get user sessions
+
+### User Activities
+28. **GET** `/api/activities` - Get all user activities
+29. **GET** `/api/activities/user/{userId}` - Get user activities
+30. **GET** `/api/activities/module/{module}` - Get activities by module
+31. **GET** `/api/activities/action/{action}` - Get activities by action type
+32. **POST** `/api/activities` - Log activity (internal)
+
+### Audit Logs
+33. **GET** `/api/audit-logs` - Get all audit logs
+34. **GET** `/api/audit-logs/user/{userId}` - Get user audit logs
+35. **GET** `/api/audit-logs/table/{table}` - Get logs by table
+36. **GET** `/api/audit-logs/record/{table}/{recordId}` - Get record history
+
+---
+
+## 📊 **ACCOUNTING**
+
+### Accounts Management
+37. **GET** `/api/accounts` - List all accounts
+38. **GET** `/api/accounts/{id}` - Get account details
+39. **POST** `/api/accounts` - Create new account
+40. **PUT** `/api/accounts/{id}` - Update account
+41. **DELETE** `/api/accounts/{id}` - Delete account
+42. **GET** `/api/accounts/type/{type}` - Get accounts by type
+43. **GET** `/api/accounts/code/{code}` - Get account by code
+44. **PATCH** `/api/accounts/{id}/status` - Toggle account active/inactive
+45. **GET** `/api/accounts/balance/{id}` - Get account balance
+46. **GET** `/api/accounts/summary` - Get accounts summary
+
+### Transactions
+47. **GET** `/api/transactions` - List all transactions
+48. **GET** `/api/transactions/{id}` - Get transaction details
+49. **POST** `/api/transactions` - Create transaction
+50. **PUT** `/api/transactions/{id}` - Update transaction
+51. **DELETE** `/api/transactions/{id}` - Delete transaction (soft)
+52. **GET** `/api/transactions/date/{date}` - Get transactions by date
+53. **GET** `/api/transactions/range/{start}/{end}` - Get transactions in date range
+54. **GET** `/api/transactions/type/{type}` - Get transactions by type
+55. **GET** `/api/transactions/reference/{type}/{id}` - Get transaction by reference
+56. **POST** `/api/transactions/{id}/reverse` - Reverse transaction
+57. **GET** `/api/transactions/export` - Export transactions
+
+### Transaction Entries
+58. **GET** `/api/transaction-entries` - List all entries
+59. **GET** `/api/transaction-entries/transaction/{id}` - Get entries by transaction
+60. **GET** `/api/transaction-entries/account/{id}` - Get entries by account
+61. **POST** `/api/transaction-entries` - Create entry
+62. **DELETE** `/api/transaction-entries/{id}` - Delete entry
+
+### Cash Flow
+63. **GET** `/api/cash-flow` - List cash flow records
+64. **GET** `/api/cash-flow/{id}` - Get cash flow details
+65. **POST** `/api/cash-flow` - Record cash flow
+66. **PUT** `/api/cash-flow/{id}` - Update cash flow
+67. **DELETE** `/api/cash-flow/{id}` - Delete cash flow
+68. **GET** `/api/cash-flow/type/{type}` - Get by type (inflow/outflow)
+69. **GET** `/api/cash-flow/date/{date}` - Get by date
+70. **GET** `/api/cash-flow/range/{start}/{end}` - Get by date range
+71. **GET** `/api/cash-flow/account/{id}` - Get by account
+72. **GET** `/api/cash-flow/summary` - Get cash flow summary
+
+### Budgets
+73. **GET** `/api/budgets` - List all budgets
+74. **GET** `/api/budgets/{id}` - Get budget details
+75. **POST** `/api/budgets` - Create budget
+76. **PUT** `/api/budgets/{id}` - Update budget
+77. **DELETE** `/api/budgets/{id}` - Delete budget
+78. **GET** `/api/budgets/year/{year}` - Get budgets by year
+79. **GET** `/api/budgets/month/{year}/{month}` - Get budgets by month
+80. **GET** `/api/budgets/category/{category}` - Get budgets by category
+81. **PATCH** `/api/budgets/{id}/amount` - Update actual amount
+82. **GET** `/api/budgets/variance-report` - Get variance report
+
+### Profit Summary
+83. **GET** `/api/profit-summary` - List profit summaries
+84. **GET** `/api/profit-summary/{id}` - Get profit summary details
+85. **POST** `/api/profit-summary` - Create profit summary
+86. **PUT** `/api/profit-summary/{id}` - Update profit summary
+87. **DELETE** `/api/profit-summary/{id}` - Delete profit summary
+88. **GET** `/api/profit-summary/period/{date}` - Get by period date
+89. **GET** `/api/profit-summary/type/{type}` - Get by period type
+90. **GET** `/api/profit-summary/range/{start}/{end}` - Get by date range
+91. **GET** `/api/profit-summary/report` - Generate profit report
+
+---
+
+## 💰 **EXPENSES MANAGEMENT**
+
+### Expenses
+92. **GET** `/api/expenses` - List all expenses
+93. **GET** `/api/expenses/{id}` - Get expense details
+94. **POST** `/api/expenses` - Create expense
+95. **PUT** `/api/expenses/{id}` - Update expense
+96. **DELETE** `/api/expenses/{id}` - Delete expense
+97. **GET** `/api/expenses/category/{category}` - Get expenses by category
+98. **GET** `/api/expenses/date/{date}` - Get expenses by date
+99. **GET** `/api/expenses/range/{start}/{end}` - Get expenses in date range
+100. **GET** `/api/expenses/method/{method}` - Get by payment method
+101. **GET** `/api/expenses/user/{userId}` - Get expenses by user
+102. **POST** `/api/expenses/{id}/receipt` - Upload receipt
+103. **GET** `/api/expenses/summary` - Get expenses summary
+
+### Scheduled Expenses
+104. **GET** `/api/scheduled-expenses` - List scheduled expenses
+105. **GET** `/api/scheduled-expenses/{id}` - Get scheduled expense details
+106. **POST** `/api/scheduled-expenses` - Create scheduled expense
+107. **PUT** `/api/scheduled-expenses/{id}` - Update scheduled expense
+108. **DELETE** `/api/scheduled-expenses/{id}` - Delete scheduled expense
+109. **PATCH** `/api/scheduled-expenses/{id}/status` - Update status
+110. **GET** `/api/scheduled-expenses/status/{status}` - Get by status
+111. **GET** `/api/scheduled-expenses/frequency/{frequency}` - Get by frequency
+112. **POST** `/api/scheduled-expenses/{id}/execute` - Execute scheduled expense
+113. **GET** `/api/scheduled-expenses/upcoming` - Get upcoming expenses
+
+### Customer Payments
+114. **GET** `/api/payments` - List all payments
+115. **GET** `/api/payments/{id}` - Get payment details
+116. **POST** `/api/payments` - Create payment
+117. **PUT** `/api/payments/{id}` - Update payment
+118. **DELETE** `/api/payments/{id}` - Delete payment (soft)
+119. **GET** `/api/payments/customer/{customerId}` - Get customer payments
+120. **GET** `/api/payments/date/{date}` - Get payments by date
+121. **GET** `/api/payments/type/{type}` - Get by payment type (receipt/payment)
+122. **GET** `/api/payments/method/{method}` - Get by payment method
+123. **GET** `/api/payments/status/{status}` - Get by status
+124. **PATCH** `/api/payments/{id}/status` - Update payment status
+125. **GET** `/api/payments/reference/{reference}` - Get by reference
+126. **POST** `/api/payments/{id}/allocate` - Allocate payment to invoice
+127. **GET** `/api/payments/unallocated` - Get unallocated payments
+
+### Supplier Payments
+128. **GET** `/api/supplier-payments` - List supplier payments
+129. **GET** `/api/supplier-payments/{id}` - Get supplier payment details
+130. **POST** `/api/supplier-payments` - Create supplier payment
+131. **PUT** `/api/supplier-payments/{id}` - Update supplier payment
+132. **DELETE** `/api/supplier-payments/{id}` - Delete supplier payment
+133. **GET** `/api/supplier-payments/supplier/{supplierId}` - Get by supplier
+134. **PATCH** `/api/supplier-payments/{id}/status` - Update status
+135. **GET** `/api/supplier-payments/outstanding` - Get outstanding payments
+
+### Payment Allocations
+136. **GET** `/api/payment-allocations` - List allocations
+137. **GET** `/api/payment-allocations/{id}` - Get allocation details
+138. **POST** `/api/payment-allocations` - Create allocation
+139. **PUT** `/api/payment-allocations/{id}` - Update allocation
+140. **DELETE** `/api/payment-allocations/{id}` - Delete allocation (soft)
+141. **GET** `/api/payment-allocations/payment/{paymentId}` - Get by payment
+142. **GET** `/api/payment-allocations/invoice/{invoiceId}` - Get by invoice
+143. **GET** `/api/payment-allocations/invoice-type/{type}/{id}` - Get by invoice type
+
+### Payment Terms
+144. **GET** `/api/payment-terms` - List payment terms
+145. **GET** `/api/payment-terms/{id}` - Get payment term details
+146. **POST** `/api/payment-terms` - Create payment term
+147. **PUT** `/api/payment-terms/{id}` - Update payment term
+148. **DELETE** `/api/payment-terms/{id}` - Delete payment term
+
+---
+
+## 📦 **INVENTORY MANAGEMENT**
+
+### Products
+149. **GET** `/api/products` - List all products
+150. **GET** `/api/products/{id}` - Get product details
+151. **POST** `/api/products` - Create product
+152. **PUT** `/api/products/{id}` - Update product
+153. **DELETE** `/api/products/{id}` - Delete product (soft)
+154. **GET** `/api/products/category/{categoryId}` - Get products by category
+155. **GET** `/api/products/supplier/{supplierId}` - Get products by supplier
+156. **GET** `/api/products/sku/{sku}` - Get product by SKU
+157. **GET** `/api/products/search?q=` - Search products
+158. **GET** `/api/products/low-stock` - Get low stock products
+159. **GET** `/api/products/out-of-stock` - Get out of stock products
+160. **PATCH** `/api/products/{id}/stock` - Update stock quantity
+161. **PATCH** `/api/products/{id}/status` - Toggle active/inactive
+162. **GET** `/api/products/export` - Export products
+163. **GET** `/api/products/import-template` - Download import template
+164. **POST** `/api/products/import` - Import products
+
+### Product Images
+165. **GET** `/api/products/{id}/images` - Get product images
+166. **POST** `/api/products/{id}/images` - Upload product image
+167. **DELETE** `/api/products/images/{imageId}` - Delete product image
+168. **PATCH** `/api/products/images/{imageId}/primary` - Set as primary image
+
+### Product Variants
+169. **GET** `/api/products/{id}/variants` - Get product variants
+170. **POST** `/api/products/{id}/variants` - Create variant
+171. **PUT** `/api/products/variants/{variantId}` - Update variant
+172. **DELETE** `/api/products/variants/{variantId}` - Delete variant
+173. **GET** `/api/products/variants/attribute/{name}` - Get variants by attribute
+
+### Categories
+174. **GET** `/api/categories` - List all categories
+175. **GET** `/api/categories/{id}` - Get category details
+176. **POST** `/api/categories` - Create category
+177. **PUT** `/api/categories/{id}` - Update category
+178. **DELETE** `/api/categories/{id}` - Delete category (soft)
+179. **GET** `/api/categories/search?q=` - Search categories
+180. **GET** `/api/categories/products/{categoryId}` - Get products in category
+
+### Units
+181. **GET** `/api/units` - List all units
+182. **GET** `/api/units/{id}` - Get unit details
+183. **POST** `/api/units` - Create unit
+184. **PUT** `/api/units/{id}` - Update unit
+185. **DELETE** `/api/units/{id}` - Delete unit (soft)
+186. **PATCH** `/api/units/{id}/status` - Toggle active/inactive
+
+### Inventory Movements
+187. **GET** `/api/inventory-movements` - List all movements
+188. **GET** `/api/inventory-movements/{id}` - Get movement details
+189. **POST** `/api/inventory-movements` - Record movement
+190. **GET** `/api/inventory-movements/product/{productId}` - Get product movements
+191. **GET** `/api/inventory-movements/type/{type}` - Get by movement type
+192. **GET** `/api/inventory-movements/date/{date}` - Get by date
+193. **GET** `/api/inventory-movements/range/{start}/{end}` - Get by date range
+194. **POST** `/api/inventory-movements/adjust` - Manual stock adjustment
+195. **GET** `/api/inventory-movements/report` - Generate movement report
+
+---
+
+## 🛒 **SALES MANAGEMENT**
+
+### Sales
+196. **GET** `/api/sales` - List all sales
+197. **GET** `/api/sales/{id}` - Get sale details
+198. **POST** `/api/sales` - Create sale
+199. **PUT** `/api/sales/{id}` - Update sale
+200. **DELETE** `/api/sales/{id}` - Delete sale (soft)
+201. **GET** `/api/sales/order/{orderNumber}` - Get sale by order number
+202. **GET** `/api/sales/customer/{customerId}` - Get customer sales
+203. **GET** `/api/sales/date/{date}` - Get sales by date
+204. **GET** `/api/sales/range/{start}/{end}` - Get sales in date range
+205. **GET** `/api/sales/status/{status}` - Get by status
+206. **GET** `/api/sales/method/{method}` - Get by payment method
+207. **PATCH** `/api/sales/{id}/status` - Update sale status
+208. **POST** `/api/sales/{id}/cancel` - Cancel sale
+209. **GET** `/api/sales/today` - Get today's sales
+210. **GET** `/api/sales/daily-report` - Get daily sales report
+211. **GET** `/api/sales/monthly-report` - Get monthly sales report
+
+### Sale Items
+212. **GET** `/api/sales/{id}/items` - Get sale items
+213. **POST** `/api/sales/{id}/items` - Add item to sale
+214. **PUT** `/api/sales/items/{itemId}` - Update sale item
+215. **DELETE** `/api/sales/items/{itemId}` - Remove item from sale
+216. **GET** `/api/sales/items/product/{productId}` - Get sales by product
+
+### Sale Adjustments (Returns/Refunds)
+217. **GET** `/api/sale-adjustments` - List adjustments
+218. **GET** `/api/sale-adjustments/{id}` - Get adjustment details
+219. **POST** `/api/sale-adjustments` - Create adjustment
+220. **GET** `/api/sale-adjustments/sale/{saleId}` - Get sale adjustments
+221. **GET** `/api/sale-adjustments/type/{type}` - Get by adjustment type
+222. **POST** `/api/sale-adjustments/{id}/process` - Process adjustment
+
+### Sale Adjustment Items
+223. **GET** `/api/sale-adjustments/{id}/items` - Get adjustment items
+224. **POST** `/api/sale-adjustments/{id}/items` - Add item to adjustment
+225. **DELETE** `/api/sale-adjustments/items/{itemId}` - Remove adjustment item
+
+### Quotations
+226. **GET** `/api/quotations` - List all quotations
+227. **GET** `/api/quotations/{id}` - Get quotation details
+228. **POST** `/api/quotations` - Create quotation
+229. **PUT** `/api/quotations/{id}` - Update quotation
+230. **DELETE** `/api/quotations/{id}` - Delete quotation
+231. **GET** `/api/quotations/customer/{customerId}` - Get customer quotations
+232. **GET** `/api/quotations/status/{status}` - Get by status
+233. **PATCH** `/api/quotations/{id}/status` - Update status
+234. **GET** `/api/quotations/valid-until/{date}` - Get expiring quotations
+235. **POST** `/api/quotations/{id}/convert-to-sale` - Convert to sale
+
+### Quotation Items
+236. **GET** `/api/quotations/{id}/items` - Get quotation items
+237. **POST** `/api/quotations/{id}/items` - Add item to quotation
+238. **PUT** `/api/quotations/items/{itemId}` - Update quotation item
+239. **DELETE** `/api/quotations/items/{itemId}` - Remove quotation item
+
+---
+
+## 🏪 **PARTIES MANAGEMENT**
+
+### Customers
+240. **GET** `/api/customers` - List all customers
+241. **GET** `/api/customers/{id}` - Get customer details
+242. **POST** `/api/customers` - Create customer
+243. **PUT** `/api/customers/{id}` - Update customer
+244. **DELETE** `/api/customers/{id}` - Delete customer (soft)
+245. **GET** `/api/customers/type/{type}` - Get customers by type
+246. **GET** `/api/customers/status/{status}` - Get by status
+247. **GET** `/api/customers/search?q=` - Search customers
+248. **PATCH** `/api/customers/{id}/status` - Toggle active/inactive
+249. **PATCH** `/api/customers/{id}/credit-limit` - Update credit limit
+250. **GET** `/api/customers/{id}/balance` - Get customer balance
+251. **GET** `/api/customers/overdue` - Get customers with overdue payments
+252. **GET** `/api/customers/export` - Export customers
+
+### Suppliers
+253. **GET** `/api/suppliers` - List all suppliers
+254. **GET** `/api/suppliers/{id}` - Get supplier details
+255. **POST** `/api/suppliers` - Create supplier
+256. **PUT** `/api/suppliers/{id}` - Update supplier
+257. **DELETE** `/api/suppliers/{id}` - Delete supplier (soft)
+258. **GET** `/api/suppliers/status/{status}` - Get by status
+259. **PATCH** `/api/suppliers/{id}/status` - Toggle active/inactive
+260. **GET** `/api/suppliers/search?q=` - Search suppliers
+261. **GET** `/api/suppliers/{id}/outstanding` - Get outstanding payments
+262. **GET** `/api/suppliers/{id}/products` - Get supplier products
+
+### Outsourcing Orders
+263. **GET** `/api/outsourcing-orders` - List outsourcing orders
+264. **GET** `/api/outsourcing-orders/{id}` - Get order details
+265. **POST** `/api/outsourcing-orders` - Create outsourcing order
+266. **PUT** `/api/outsourcing-orders/{id}` - Update order
+267. **DELETE** `/api/outsourcing-orders/{id}` - Delete order
+268. **GET** `/api/outsourcing-orders/sale/{saleId}` - Get by sale
+269. **GET** `/api/outsourcing-orders/supplier/{supplierId}` - Get by supplier
+270. **GET** `/api/outsourcing-orders/status/{status}` - Get by status
+271. **PATCH** `/api/outsourcing-orders/{id}/status` - Update status
+
+### External Purchases
+272. **GET** `/api/external-purchases` - List external purchases
+273. **GET** `/api/external-purchases/{id}` - Get purchase details
+274. **POST** `/api/external-purchases` - Record external purchase
+275. **DELETE** `/api/external-purchases/{id}` - Delete external purchase
+276. **GET** `/api/external-purchases/sale/{saleId}` - Get by sale
+
+---
+
+## 📋 **PROCUREMENT**
+
+### Purchase Orders
+277. **GET** `/api/purchase-orders` - List all purchase orders
+278. **GET** `/api/purchase-orders/{id}` - Get purchase order details
+279. **POST** `/api/purchase-orders` - Create purchase order
+280. **PUT** `/api/purchase-orders/{id}` - Update purchase order
+281. **DELETE** `/api/purchase-orders/{id}` - Delete purchase order
+282. **GET** `/api/purchase-orders/supplier/{supplierId}` - Get by supplier
+283. **GET** `/api/purchase-orders/status/{status}` - Get by status
+284. **PATCH** `/api/purchase-orders/{id}/status` - Update status
+285. **GET** `/api/purchase-orders/order/{orderNumber}` - Get by order number
+286. **GET** `/api/purchase-orders/pending-delivery` - Get pending deliveries
+287. **POST** `/api/purchase-orders/{id}/receive` - Receive goods
+
+### Purchase Order Items
+288. **GET** `/api/purchase-orders/{id}/items` - Get PO items
+289. **POST** `/api/purchase-orders/{id}/items` - Add item to PO
+290. **PUT** `/api/purchase-orders/items/{itemId}` - Update PO item
+291. **DELETE** `/api/purchase-orders/items/{itemId}` - Remove PO item
+292. **PATCH** `/api/purchase-orders/items/{itemId}/receive` - Update received quantity
+
+---
+
+## 📅 **SCHEDULING & NOTIFICATIONS**
+
+### Events
+293. **GET** `/api/events` - List all events
+294. **GET** `/api/events/{id}` - Get event details
+295. **POST** `/api/events` - Create event
+296. **PUT** `/api/events/{id}` - Update event
+297. **DELETE** `/api/events/{id}` - Delete event
+298. **GET** `/api/events/date/{date}` - Get events by date
+299. **GET** `/api/events/range/{start}/{end}` - Get events in date range
+300. **GET** `/api/events/type/{type}` - Get by event type
+301. **GET** `/api/events/customer/{customerId}` - Get customer events
+302. **GET** `/api/events/priority/{priority}` - Get by priority
+303. **GET** `/api/events/status/{status}` - Get by status
+304. **PATCH** `/api/events/{id}/status` - Update event status
+305. **GET** `/api/events/upcoming` - Get upcoming events
+306. **GET** `/api/events/today` - Get today's events
+
+### Notifications
+307. **GET** `/api/notifications` - List all notifications
+308. **GET** `/api/notifications/{id}` - Get notification details
+309. **POST** `/api/notifications` - Create notification
+310. **DELETE** `/api/notifications/{id}` - Delete notification
+311. **GET** `/api/notifications/type/{type}` - Get by notification type
+312. **GET** `/api/notifications/unread` - Get unread notifications
+313. **PATCH** `/api/notifications/{id}/read` - Mark as read
+314. **PATCH** `/api/notifications/read-all` - Mark all as read
+315. **GET** `/api/notifications/related/{type}/{id}` - Get by related entity
+
+---
+
+## 👥 **HR MANAGEMENT**
+
+### Employees
+316. **GET** `/api/employees` - List all employees
+317. **GET** `/api/employees/{id}` - Get employee details
+318. **POST** `/api/employees` - Create employee
+319. **PUT** `/api/employees/{id}` - Update employee
+320. **DELETE** `/api/employees/{id}` - Delete employee
+321. **GET** `/api/employees/search?q=` - Search employees
+322. **GET** `/api/employees/status/{status}` - Get by status
+323. **PATCH** `/api/employees/{id}/status` - Toggle active/inactive
+324. **PATCH** `/api/employees/{id}/salary` - Update salary
+325. **GET** `/api/employees/export` - Export employees
+
+---
+
+## 📈 **REPORTS & ANALYTICS**
+
+### Dashboard APIs
+326. **GET** `/api/dashboard/summary` - Get dashboard summary
+327. **GET** `/api/dashboard/sales-trend` - Get sales trend
+328. **GET** `/api/dashboard/revenue-metrics` - Get revenue metrics
+329. **GET** `/api/dashboard/inventory-metrics` - Get inventory metrics
+330. **GET** `/api/dashboard/customer-metrics` - Get customer metrics
+331. **GET** `/api/dashboard/expense-metrics` - Get expense metrics
+332. **GET** `/api/dashboard/profit-loss` - Get profit & loss statement
+333. **GET** `/api/dashboard/balance-sheet` - Get balance sheet
+334. **GET** `/api/dashboard/cash-flow-statement` - Get cash flow statement
+
+### Report Generation
+335. **GET** `/api/reports/sales` - Generate sales report
+336. **GET** `/api/reports/inventory` - Generate inventory report
+337. **GET** `/api/reports/customers` - Generate customer report
+338. **GET** `/api/reports/suppliers` - Generate supplier report
+339. **GET** `/api/reports/expenses` - Generate expense report
+340. **GET** `/api/reports/profit-loss` - Generate P&L report
+341. **GET** `/api/reports/aged-receivables` - Generate aged receivables
+342. **GET** `/api/reports/aged-payables` - Generate aged payables
+343. **GET** `/api/reports/stock-valuation` - Generate stock valuation
+344. **GET** `/api/reports/top-products` - Generate top products report
+345. **GET** `/api/reports/top-customers` - Generate top customers report
+
+---
+
+## 🔧 **UTILITY & SYSTEM**
+
+### System Settings
+346. **GET** `/api/settings` - Get all system settings
+347. **GET** `/api/settings/{key}` - Get specific setting
+348. **PUT** `/api/settings/{key}` - Update setting
+349. **POST** `/api/settings` - Create setting
+
+### Backup & Restore
+350. **POST** `/api/system/backup` - Create system backup
+351. **GET** `/api/system/backups` - List backups
+352. **POST** `/api/system/restore` - Restore from backup
+353. **DELETE** `/api/system/backups/{id}` - Delete backup
+
+### Data Import/Export
+354. **POST** `/api/data/import` - Import data
+355. **GET** `/api/data/export` - Export data
+356. **GET** `/api/data/templates` - Get import templates
+
+### System Health
+357. **GET** `/api/system/health` - Check system health
+358. **GET** `/api/system/status` - Get system status
+359. **GET** `/api/system/logs` - Get system logs
+360. **GET** `/api/system/metrics` - Get system metrics
+
+### Bulk Operations
+361. **POST** `/api/bulk/update` - Bulk update records
+362. **POST** `/api/bulk/delete` - Bulk delete records
+363. **POST** `/api/bulk/status` - Bulk update status
+
+---
+
+## 📊 **TOTAL APIS: 363**
+
+## **Summary by Category:**
+- 🔐 Authentication: 36 APIs
+- 📊 Accounting: 55 APIs  
+- 💰 Expenses: 44 APIs
+- 📦 Inventory: 47 APIs
+- 🛒 Sales: 44 APIs
+- 🏪 Parties: 33 APIs
+- 📋 Procurement: 16 APIs
+- 📅 Scheduling: 23 APIs
+- 👥 HR: 9 APIs
+- 📈 Reports: 20 APIs
+- 🔧 Utility: 36 APIs
+
+## **Key API Patterns:**
+1. **CRUD Operations**: Each entity has GET(list), GET(single), POST(create), PUT(update), DELETE
+2. **Filtering**: GET by various criteria (date, status, type, etc.)
+3. **Status Management**: PATCH endpoints for status changes
+4. **Reporting**: GET endpoints for various reports
+5. **Bulk Operations**: For mass updates/deletes
+6. **Export/Import**: Data migration endpoints
+7. **Dashboard**: Summary and analytics endpoints
+
+## **Authentication Requirements:**
+- Most APIs require authentication
+- Role-based access control needed
+- Sensitive operations require higher privileges
+- Audit logging for critical operations
